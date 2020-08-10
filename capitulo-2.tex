@@ -1,0 +1,142 @@
+\chapter{Estado da Arte}
+\label{chap:estado-da-arte}
+
+\section{Introdução}
+\label{chap2:sec:intro}
+
+% Introdução e conceitos básicos de holografia
+Cada capítulo \underline{intermédio} deve começar com uma breve introdução onde é explicado com um pouco mais de detalhe qual é o tema deste capítulo, e como é que se encontra organizado (i.e., o que é que cada secção seguinte discute). 
+
+% ----------------------------------------------------------------------------------------
+
+\section{Objetivos}
+
+
+\section{Perspetiva Histórica}
+% origem da fotografia
+% fotografia monocromática
+% fotografia a cores
+% holografia
+
+\section{Conceitos Base}
+\label{chap2:sec:concetos-base}
+
+\subsection{Holografia}
+\label{chap2:subsec:holografia}
+
+Quando um objeto é iluminado, a luz é dispersa pela superfície desse objeto, criando uma onde. Esta onda contém toda a informação sobre a luz: a amplitude define o brilho e a fase representa a forma do objeto. Enquanto as fotografias clássicas gravam apenas a intensidade da luz, um holograma preserva a fase do objeto através das características de interferência e difração da luz, guardando assim toda a informação necessária à reconstrução 3D do objeto original.
+
+
+\subsubsection{Princípios de Holografia}
+\label{chap2:ssubsec:principios-holografia} 
+
+% // TODO: rever princípios de holografia
+% // TODO: talvez juntar esta subsecção com anterior
+O principio de holografia foi descoberto em 1948 pelo físico Dennis Gabor enquanto investigava microscopia de eletrões.
+
+Ao contrário da fotografia convencional, que permite a captura da intensidade da luz, holografia permite guardar a amplitude e a fase da onde de luz dispersa por um objeto. Com a iluminação correta, o holograma produz a onda de luz original, permitindo ao utilizador observar o objeto tal como se estivesse fisicamente presente.
+
+
+
+\subsubsection{Representação de Dados Holográficos}
+\label{chap2:ssubsec:representacao-dados} 
+
+Os dados holográficos podem ser representados de várias formas. Embora sejam todas equivalentes no sentido em que representam o mesmo objeto, algumas tornam a compressão mais eficiente. 
+
+% // QUESTION: é necessário falar da representação baseada em intensidade? 
+% // (compression of digital holographic data: an overview, pg 3)
+% // QUESTION: porque é que algumas formas são mais eficientes?
+
+No âmbito deste projeto, apenas é relevante a representação no campo de onda complexo.
+% // TODO: confirmar se a tradução de  "wavefield" é campo de onda
+
+
+\begin{itemize}
+    \item Dados reais e imaginários --- Utiliza um sistema de coordenadas cartesiano para representar amplitudes complexas;
+    \item Dados da amplitude e fase --- Os valores complexos são expressos num sistema de coordenadas polares.
+\end{itemize}
+
+Os hologramas utilizados neste projeto são representados pelo formato de amplitude-fase.
+
+
+\subsubsection{Reconstrução de Holograma}
+\label{chap2:ssubsec:reconst-holograma}
+
+
+
+\subsection{Compressão}
+\label{chap2:subsec:compressao}
+
+\subsection{JPEG2000}
+\label{chap2:subsec:jpeg2000}
+
+
+
+\subsection{Cor}
+\label{chap2:subsec:cor}
+
+\subsubsection{RGB}
+\label{chap2:ssubsec:rgb}
+
+\subsubsection{YCBCR}
+\label{chap2:ssubsec:ycbcr}
+
+% representação
+% utilização
+% conversão de rgb para ycbcr (?)
+
+% ----------------------------------------------------------------------------------------
+
+\section{Estado da Arte}
+\label{chap2:sec:estado-arte}
+
+
+Primeira proposta para codificação digital de hologramas data 1991, Sato et al. captura franjas holográficos usando uma câmara que foram por sua vez modulados em sinal TV e transmitidos para um recetor [1]. (captured the holographic fringes using a camera, which was then modulated into a TV signal and transmitted to the receiver.);
+  
+Em 1993, Yoshikawa notou que não era prática a aplicação da compressão de imagem 2d diretamente no holograma. Propôs a compressão do holograma em segmentos que correspondem a diferentes perspetivas de reconstrução. Segmentos foram comprimidos com MPEG-1 e MPEG-2 [2,3]. (ver resultados)
+
+Em 2002, Naughton et al. estudou a compressibilidade da holografia digital de mudança de fase usando vários algoritmos de compressão sem perdas [4]. Concluiram que são esperadas melhores taxas de compressão quando o holograma digital é codificado em componentes reais e imaginarias independentemente.
+
+Em [4] foram também estudadas outras técnicas de compressão com perdas tais como subamostragem e quantificação, sendo a última muito eficaz. A eficácia da quantização tanto na simulação numérica como na ótica foi confirmada por Mills e Yamaguchi [5].
+
+A quantização no domínio da reconstrução (não sei o que isto quer dizer) de hologramas de mudança de fase de foram analisados por Darakis and Soraghan [6].
+
+Naughton et al. em 2003 e Darakis et al. em 2006 demonstraram que a aplicação direta de wavelets standard em hologramas não é muito eficiente, visto que as wavelets standard são tipicamente usadas no processamento de sinais com poucas variações (smooth signals). Propuseram a utilização de uma outra familia de wavelets — Fresnelets. Fresnelets foram também aplicadas em 2003 por Liveling et al. [8]
+
+Em 2006, Seo et al. propôs comprimir segmentos do holograma usando multi-vistas e temporal prediction dentro de MPEG-2 modificado.
+
+Em 2010 Darkis et al. Determinaram a taxa de compressão mais elevada que pode ser obtida em hologramas mantendo uma qualidade de reconstrução visualmente sem perdas. Nos seus ensaios foram usados MPEG-4 e Dirac. Na informação amplitude-fase foi aplicado um método multiple description coding utilizando máximo à posterior. Mostrou-se um mecanismo poderoso para mitigar erros no canais em hologramas digitais.
+
+Em 2013 Blinder investigou a decomposição alternativa em hologramas off-axis.
+Em 2014 Still, Xing e Dufaux estudaram codificação sem perdas baseada em quantização vetorial. 
+
+Recentemente Peixeiro et al. [9] realizou um benchmark dos codificadores standard de imagens aplicados em hologramas digitais, em conjunto com os formatos de representação principais. Foram comparados os seguintes codificadores de imagem padrão
+  JPEG;
+  JPEG 2000;
+  H.264/AVC intra;
+  HEVC intra.
+Os autores concluiram que os melhores formatos de representação são phase-shiffted e real-imaginário
+
+Em 2016, Dufaux review o estado da arte da compressão de hologramas digitais
+
+% // TODO: passar referencias para bibliografia
+\begin{comment}
+[1]: _K. Sato, K. Higuchi, H. Katsuma, Holographic television by liquid crystal device, in: Third International Conference on Holographic Systems, Components and Applications, 1991, IET, 1991, pp. 20–23._ \
+[2]: _H. Yoshikawa, Digital holographic signal processing, in: Proceeding of the TAO First International Symposium, 1993, pp. S–4–2._\
+[3]: _H. Yoshikawa, J. Tamai, Holographic image compression by motion picture coding, in: Proceedings of SPIE, 2652, 1996, p. 2._\
+[4]: _J. Naughton, Y. Frauel, B. Javidi, E. Tajahuerce, Compression of digital holograms for three-dimensional object reconstruction and recognition, Appl. Opt. 41 (20) (2002)4124–4132._\
+[5]: _G.A. Mills, I. Yamaguchi, Effects of quantization in phase-shifting digital holography, Appl. Opt. 44 (7) (2005) 1216–1225._\
+[6]: _E. Darakis, J.J. Soraghan, Reconstruction domain compression of phase-shifting digital holograms, Appl. Opt. 46 (3) (2007) 351–356._\
+[7]: _Y. Seo, H. Choi, J. Bae, J. Yoo, D. Kim, Data compression technique for digital holograms using a temporally scalable coding method for 2-D images, in: IEEE International Symposium on Signal Processing and Information Technology, 2006, pp. 326–331._\
+[8]: _M. Liebling, T. Blu, M. Unser, Fresnelets: new multiresolution wavelet bases for digital holography, IEEE Trans. Image Process.: Publ. IEEE Signal Process. Soc. 12 (1) (2003) 29–43._\
+[9]: _J. Peixeiro, C. Brites, J. Ascenso, F. Pereira, Digital holography: Benchmarking coding standards and representation formats, in: IEEE International Conf. on Multimedia and Expo - ICME, 2016_\
+[10]: _F. Dufaux, Y. Xing, B. Pesquet-Popescu, P. Schelkens, Compression of digital holographic data: an overview, Proc. SPIE 9599 (2015) 95990I–95990I–11._ \
+[11]: _] Y. Xing, M. Kaaniche, B. Pesquet-Popescu, F. Dufaux (Eds.), Digital Holographic Data Representation and Compression, Academic Press, 2016._ \
+\end{comment}
+
+
+% ----------------------------------------------------------------------------------------
+
+\section{Conclusões}
+\label{chap2:sec:concs}
+Cada capítulo \underline{intermédio} deve referir o que demais importante se conclui desta parte do trabalho, de modo a fornecer a motivação para o capítulo ou passos seguintes.
