@@ -1,20 +1,126 @@
 \chapter{Etapas de Desenvolvimento e Implementação}
-% Os titulos dados aos capítulos são meros exemplos. Cada relatório deve adequar-se ao projeto desenvolvido.
-\label{chap4:imp-test}
+\label{chap:imp-test}
 
 \section{Introdução}
 \label{chap4:sec:intro}
-Cada capítulo \underline{intermédio} deve começar com uma breve introdução onde é explicado com um pouco mais de detalhe qual é o tema deste capítulo, e como é que se encontra organizado (i.e., o que é que cada secção seguinte discute).
 
-\section{Reconstrução de hologramas}
+\section{Reconstrução dos Hologramas}
 \label{chap4:sec:...}
-\section{Compressão do hologramas}
-\section{Medida da qualidade de reconstrução}
-\section{Visualização de dados}
+
+O projeto iniciou-se com uma pesquisa exaustiva sobre a ciência da holografia, a qual resultou no Estado da Arte resumido no Capítulo \ref{chap:estado-da-arte}.
+
+Simultaneamente, foi efetuado um estudo das funções do \textit{software} desenvolvido no âmbito do projeto JPEG Pleno a fim de se poder fazer a respetiva transcrição para Python.
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{load\_hologram}.}
+    \label{tab:load_hologram}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|load_hologram|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo original em MATLAB}\\
+         & \mintinline[breaklines]{matlab}{function [hologram] = load_hologram(ampli_path, phase_path)}\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo transcrito em Python}\\
+         & \mintinline{python}{def load_hologram(ampli_path, phase_path)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Esta função carrega um holograma da base de dados b<>com a partir dos seus ficheiros de amplitude e fase.\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|ampli_path|: Diretório do ficheiro da imagem da amplitude (caminho relativo ou absoluto).\\
+         & \verb|phase_path|: Diretório do ficheiro da imagem da fase (caminho relativo ou absoluto).\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Modulação complexa do holograma (3 canais: R-G-B).\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{propagate\_asm}.}
+    \label{tab:propagate_asm}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|propagate_asm|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo original em MATLAB}\\
+         & \mintinline[breaklines]{matlab}{function [v] = propagate_asm(u, pitch, wavelength, z)}\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo transcrito em Python}\\
+         & \mintinline[breaklines]{python}{def propagate_asm(u, pitch, wavelength, z)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Esta função simula a propagação no plano complexo \verb|u| sobre a distância \verb|z| utilizando o \ac{ASM}.\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|u|: Campo de onda de luz do plano de \textit{input} (um canal).\\
+         & \verb|pitch|: Distância entre pixeis (em metros).\\
+         & \verb|wavelength|: Comprimento de onda do canal de cor a propagar (em metros).\\
+         & \verb|z|: Distância de propagação ao longo do eixo ótico (em metros).\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Campo de onda de luz no plano de destino (um canal).\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{reconst\_hologram}.}
+    \label{tab:reconst_hologram}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|reconst_hologram|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo original em MATLAB}\\
+         & \mintinline[breaklines]{matlab}{function [recons] = reconsHologram(hologram, pitch, wavelengths, z, pupilPos, pupilSize)
+         }\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo transcrito em Python}\\
+         & \mintinline[breaklines]{python}{def reconst_hologram(hologram, pitch, wavelengths, z, pupil_pos=[0,0], pupil_size=None)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Esta função reconstrói o holograma a uma distância \verb|z|, utilizando o \ac{ASM}. Permite o uso de uma janela para obter reconstruções de diferentes pontos de vista.\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|hologram|: Holograma de modulação complexa (3 canais: R-G-B). \\
+         & \verb|pitch|: Distância entre pixeis (em metros).\\
+         & \verb|wavelengths|: Comprimentos de onda de luz (em metros, 3 canais: R-G-B).\\
+         & \verb|z|: Distância de reconstrução (em metros).\\
+         & \verb|pupilPos|: Posição da janela (em pixeis, canto superior direito).\\
+         & \verb|pupilSize|: Tamanho da janela (em pixeis, altura $\times$ largura).\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Reconstrução numérica do holograma (3 canais: R-G-B).\\
+        \hline
+    \end{tabular}
+\end{table}
+
+% - Estudo holografia
+% - estudo funções matlab
+% transcrever funções para scripts em python
+% comparar output entre funções de matlab e python para confirmar que os hologramas estão a ser reconstruidos corretamente
+% desenvolver script para reconstruir o mesmo holograma de 16 vistas diferentes
+
+
+\section{Compressão dos Hologramas Reconstruídos}
+\lipsum[1]
+% automatização de execução dos softwares
+% estudar o uso de kdu
+% implementar script que comprime com e sem transformada de cor, e com bitrates: [0.1, 0.3, 0.6, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0], e descomprime as reconstruções do holograma
+
+\section{Determinação das Métricas de Compressão}
+\lipsum[1]
+% calcular o débito com a métrica PSNR entre o holograma original e a imagem comprimida
+% estudar qual a melhor forma de guardar os débitos calculados
+% implementar no script a escrita dos dados num ficheiro json
+% a partir dos ficheiros json gerados, criar gráficos para apresentar os resultados com uso da biblioteca matplotlib.pyplot
+
+
+
+
 
 
 
 
 \section{Conclusões}
 \label{chap4:sec:concs}
-Cada capítulo \underline{intermédio} deve referir o que demais importante se conclui desta parte do trabalho, de modo a fornecer a motivação para o capítulo ou passos seguintes.
