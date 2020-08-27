@@ -4,10 +4,13 @@
 % substituir linha seguinte por 
 % \usepackage[english]{babel} 
 % se o relatório for escrito na língua inglesa.
+\usepackage{siunitx}
+\sisetup{math-micro=\text{\textmu},text-micro=$\mu$}
 \usepackage[portuguese]{babel}
-
 % \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{textcomp}
 
 \usepackage{makeidx}
 \usepackage{xspace}
@@ -123,6 +126,10 @@ Abril\or Maio\or Junho\or Julho\or Agosto\or Setembro\or Outubro\or Novembro\or 
 Dezembro\fi de \number \year} 
 
 
+\graphicspath{{img/}} %Setting the graphics path
+
+\usepackage{minted}
+
 
 \begin{document}
 
@@ -188,6 +195,7 @@ Dezembro\fi de \number \year}
 \backmatter
 
 \bibliographystyle{plain}
-\bibliography{bibliografia}
+\nocite{*}
+% \bibliography{bibliografia}
 
 \end{document}
