@@ -1,8 +1,8 @@
 \chapter{Tecnologias e Ferramentas Utilizadas}
-\label{chap:tecno-ferra}
+\label{ch::tecno-ferr}
 
 \section{Introdução}
-\label{chap3:sec:intro}
+\label{sec::tecno-ferr:intro}
 
 O projeto apresentado só foi possível ser concluído devido à existência de tecnologias e ferramentas, assim como de materiais, os quais se revelaram essenciais.
 
@@ -20,7 +20,7 @@ Em particular, este Capítulo aborda:
 
 
 \section{Tecnologias e Ferramentas}
-\label{chap3:sec:tec-ferr}
+\label{sec::tecno-ferr:tecno-ferr}
 
 O desenvolvimento do projeto envolveu o trabalho conjunto de diversas ferramentas, nomeadamente Python 3, \textit{Kakadu Software} e \textit{software} escrito no âmbito do projeto JPEG Pleno.
 
@@ -48,7 +48,7 @@ A escolha do Python foi, portanto, natural no âmbito do presente projeto.
 Durante a fase de transcrição decorreu uma atualização do Python, tendo sido a última versão do código executada e testada na versão 3.8.2 em três distribuições GNU/Linux de 64 bits: Ubuntu 18.04 LTS, Fedora 31 e Linux Mint 20.
 
 \subsection{\textit{Kakadu Software}}
-
+\label{ssec::tecno-ferr:tecno-ferr:kdu}
 Uma vez que o JPEG2000 é o formato alvo deste projeto, e tendo em conta a dificuldade encontrada em projetos anteriores no contexto da holografia em utilizar a ferramenta \textit{FFmpeg}, foi recomendado pela professora orientadora a utilização do \textit{Kakadu Software}.
 
 Este é um \ac{SDK} para codificação e descodificação de imagens com recurso ao formato JPEG2000, segundo o \textit{standard} pela \ac{JPEG}.
@@ -66,7 +66,7 @@ kdu_compress -i input_file -o output_file -rate n Cycc=<yes|no> -precise -quiet
         \item \verb|-i input_file|: imagem de \textit{input};
         \item \verb|-o output_file|: ficheiro de \textit{output};
         \item \verb|-rate n|: número de \textit{bits} por amostra ($n$ pode ser um número flutuante);
-        \item \verb#Cycc=<yes|no>#: \verb|yes| caso seja usada a codificação com transformada de cor de RGB para YCbCr, \verb|no| em caso contrário;
+        \item \verb#Cycc=<yes|no>#: \verb|yes| caso seja usada a codificação com transformada de cor de \ac{RGB} para YCbCr, \verb|no| em caso contrário;
         \item \verb|-precise|: força o uso de representações de 32 \textit{bits};
         \item \verb|-quiet|: suprime o \textit{output} do programa.
     \end{itemize}
@@ -89,8 +89,10 @@ kdu_expand -i input_file -o output_file -rate n -quiet
 % 'kdu_expand -i {} -o {} -rate {} -precise -quiet'
 
 \section{Materiais Utilizados}
+\label{sec::tecno-ferr:materiais}
 
 \subsection{\textit{Hardware}}
+\label{ssec::tecno-ferr:materiais:hardware}
 
 De notar que esta implementação do \textit{software} de reconstrução de hologramas requer computadores com especificações mais generosas.
 
@@ -101,6 +103,7 @@ Para este projeto, dois computadores em particular executaram as várias iteraç
 \end{enumerate}
 
 \subsection{Hologramas}
+\label{ssec::tecno-ferr:materiais:hologramas}
 
 Os hologramas reconstruidos com o \textit{software} desenvolvido no âmbito deste projeto são fornecidos pelo \textit{Institute of Research \& Technology b<>com}. De entre os disponíveis, foram utilizados os seguintes hologramas com as respetivas características:
 \begin{enumerate}
@@ -156,9 +159,6 @@ Os hologramas reconstruidos com o \textit{software} desenvolvido no âmbito dest
 
 
 \section{Conclusões}
-\label{chap3:sec:concs}
+\label{sec::tecno-ferr:conclusao}
 
-Após a seleção das tecnologias e materiais, conforme supra-mencionados, ir-se-á proceder no Capítulo \ref{chap4:imp-test} ao delineamento da estratégia de investigação do projeto, a qual está intimamente ligada às escolhas apresentadas no presente Capítulo, entre elas a escolha da linguagem Python para transcrição do \textit{software} original de reconstrução de hologramas, o \ac{SDK} para realizar a codificação no formato JPEG2000 e os hologramas testados.
-
-
-% Cada capítulo \underline{intermédio} deve referir o que demais importante se conclui desta parte do trabalho, de modo a fornecer a motivação para o capítulo ou passos seguintes.
+Após a seleção das tecnologias e materiais, conforme supra-mencionados, ir-se-á proceder no Capítulo \ref{ch::imp-test} ao delineamento da estratégia de investigação do projeto, a qual está intimamente ligada às escolhas apresentadas no presente Capítulo, entre elas a escolha da linguagem Python para transcrição do \textit{software} original de reconstrução de hologramas, o \ac{SDK} para realizar a codificação no formato JPEG2000 e os hologramas testados.
