@@ -32,7 +32,20 @@ Para o sucesso deste projeto foi essencial delinear uma estratégia de investiga
     \end{enumerate}
 \end{enumerate}
 
-As Secções subsequentes expõem o trabalho desenvolvido neste sentido.
+As Secções subsequentes expõem o trabalho desenvolvido neste sentido e a Figura \ref{fig:projeto} esquematiza o processo final.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{projeto}
+    \caption
+        [Diagrama do processo efetuado sobre um holograma para obtenção dos resultados.]
+        {
+            Diagrama do processo efetuado sobre um holograma para obtenção dos resultados.\\
+            O caminho vermelho/amarelo representa o trajeto principal pelo qual o holograma sofre processamento. Os caminhos verdes detalham os processos intermédios correspondentes a um determinado processo do trajeto principal (a entrada é dada por ``\textit{call}'' e o retorno é dado por ``\textit{return}''). As dependências entre as principais funções são indicadas por ``\textit{Use}''.\\
+
+        }
+    \label{fig:projeto}
+\end{figure}
 
 
 \section{Reconstrução dos Hologramas}
@@ -49,7 +62,7 @@ Simultaneamente, foi efetuado um estudo das funções do \textit{software} desen
 
 % load hologram
 
-\begin{table}[!hp]
+\begin{table}[!htbp]
     \centering
     \caption{Resumo da documentação da função \texttt{load\_hologram}.}
     \label{tab:load_hologram}
@@ -81,7 +94,7 @@ Simultaneamente, foi efetuado um estudo das funções do \textit{software} desen
 
 % propagate asm
 
-\begin{table}[!hp]
+\begin{table}[!htbp]
     \centering
     \caption{Resumo da documentação da função \texttt{propagate\_asm}.}
     \label{tab:propagate_asm}
@@ -115,7 +128,7 @@ Simultaneamente, foi efetuado um estudo das funções do \textit{software} desen
 
 % reconst hologram
 
-\begin{table}[!hp]
+\begin{table}[!htbp]
     \centering
     \caption{Resumo da documentação da função \texttt{reconst\_hologram}.}
     \label{tab:reconst_hologram}
@@ -129,7 +142,7 @@ Simultaneamente, foi efetuado um estudo das funções do \textit{software} desen
          }\\
         \hline
         \multicolumn{2}{l}{\bfseries Protótipo transcrito em Python}\\
-         & \mintinline[breaklines]{python}{def reconst_hologram(hologram, pitch, wavelengths, z, pupil_pos=[0,0], pupil_size=None)} \\
+         & \mintinline[breaklines]{python}{def reconst_hologram(hologram, pitch, wavelengths, z, pupil_pos, pupil_size)} \\
         \hline\multicolumn{2}{l}{\bfseries Descrição}\\
          & Esta função reconstrói o holograma a uma distância \verb|z|, utilizando o \ac{ASM}. Permite o uso de uma janela para obter reconstruções de diferentes pontos de vista.\\
         \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
@@ -138,7 +151,9 @@ Simultaneamente, foi efetuado um estudo das funções do \textit{software} desen
          & \verb|wavelengths|: Comprimentos de onda de luz (em metros, 3 canais: \ac{RGB}).\\
          & \verb|z|: Distância de reconstrução (em metros).\\
          & \verb|pupilPos|: Posição da janela (em pixeis, canto superior direito).\\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|[0, 0]|.\\
          & \verb|pupilSize|: Tamanho da janela (em pixeis, altura $\times$ largura).\\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|None|.\\
         \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
          & Reconstrução numérica do holograma (3 canais: \ac{RGB}).\\
         \hline\multicolumn{2}{l}{\bfseries Efeitos colaterais}\\
@@ -161,7 +176,7 @@ Estas funções foram compiladas num único \textit{script} Python. A fim de cum
     \item \verb|pupil_size|: Lista que contém o tamanho da janela de reconstrução (em pixeis).
 \end{itemize}
 
-\begin{table}[!hp]
+\begin{table}[!htbp]
     \centering
     \caption{Resumo da documentação da função \texttt{reconst\_16views}.}
     \label{tab:reconst_16views}
@@ -171,7 +186,7 @@ Estas funções foram compiladas num único \textit{script} Python. A fim de cum
          & \verb|reconst_16views|\\
         \hline
         \multicolumn{2}{l}{\bfseries Protótipo em Python}\\
-         & \mintinline[breaklines]{python}{def reconst_16views(hologram='dices4k')} \\
+         & \mintinline[breaklines]{python}{def reconst_16views(hologram)} \\
         \hline\multicolumn{2}{l}{\bfseries Descrição}\\
          & Reconstrói o holograma fornecido por argumento em 16 vistas. \\
          & \textit{Processo.} Carrega o holograma (dois ficheiros \textit{bitmap}: amplitude e fase) e o respetivo ficheiro de especificações (formato JSON). Calcula as posições das 16 vistas tendo em conta o tamanho do holograma.\\
@@ -185,9 +200,17 @@ Estas funções foram compiladas num único \textit{script} Python. A fim de cum
         \hline\multicolumn{2}{l}{\bfseries Dependências}\\
          & Função \verb|load_hologram| (Tabela \ref{tab:load_hologram}); \\
          & Função \verb|reconst_hologram| (Tabela \ref{tab:reconst_hologram}). \\
+         & \textit{Ver Figura \ref{fig:reconst_16views}.} \\
         \hline
     \end{tabular}
 \end{table}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[scale=.6]{reconst_16views}
+    \caption{Diagrama de dependências da função \texttt{reconst\_16views}.}
+    \label{fig:reconst_16views}
+\end{figure}
 
 Todavia, havendo uma transcrição de funções entre linguagens de programação, exigiu-se uma forma de comprovar que as funções transcritas em Python são equivalentes às originais em MATLAB. Para este fim, delineou-se a seguinte estratégia:
 
@@ -216,6 +239,8 @@ Com o \textit{script} devidamente implementado e testado, prosseguiu-se com a se
 \section{Compressão dos Hologramas Reconstruídos}
 \label{sec::imp-test:holo-compress}
 
+TODO
+
 % [x] estudar o uso de kdu
 % [ ] automatização de execução dos softwares
 % [ ] implementar script que comprime com e sem transformada de cor, e com bitrates: [0.1, 0.3, 0.6, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0], e descomprime as reconstruções do holograma
@@ -233,7 +258,10 @@ A fase de estudo do \ac{kdu} resultou no conhecimento exposto na Secção \ref{s
 \subsection{Implementação e Execução do \textit{Script} de Compressão}
 \label{ssec::imp-tes:holo-compress:script}
 
-\begin{table}[!hp]
+TODO
+
+
+\begin{table}[!htbp]
     \centering
     \caption{Resumo da documentação da função \texttt{compress\_views}.}
     \label{tab:compress_views}
@@ -243,29 +271,138 @@ A fase de estudo do \ac{kdu} resultou no conhecimento exposto na Secção \ref{s
          & \verb|compress_views|\\
         \hline
         \multicolumn{2}{l}{\bfseries Protótipo em Python}\\
-         & \mintinline[breaklines]{python}{def compress_views(hologram='dices4k', ycbcr=False, rate=1.0)} \\
+         & \mintinline[breaklines]{python}{def compress_views(hologram, ycbcr, rate)} \\
         \hline\multicolumn{2}{l}{\bfseries Descrição}\\
-         &  \\
-         & \textit{Processo.} \\
+         & Comprimir os hologramas e calcular o \ac{PSNR}. \\
+         & \textit{Processo.} Para cada vista, o holograma é codificado, descodificado e analisado em termos do \ac{PSNR}. São criados 16 ficheiros \verb|*.jp2| por pasta \verb|rate_n|, correspondentes às 16 vistas reconstruídas, assim como ficheiros JSON (um por holograma) na pasta \verb|kduOutput| com as métricas de compressão (\ac{PSNR}). \\
         \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
-         & \verb|hologram|: .\\
+         & \verb|hologram|: Nome do holograma a comprimir.\\
          & \hspace{1cm} \textit{Valor por defeito.} ``\verb|dices4k|''.\\
-         & \verb|ycbcr|: .\\
+         & \verb|ycbcr|: \textit{Flag} que indica ao \ac{kdu} se deve ser efetuada uma transformada de cor.\\
          & \hspace{1cm} \textit{Valor por defeito.} \verb|False|.\\
-         & \verb|rate|: .\\
+         & \verb|rate|: número de \textit{bits} por amostra.\\
          & \hspace{1cm} \textit{Valor por defeito.} \verb|1.0|.\\
         \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
          & Não aplicável.\\
         \hline\multicolumn{2}{l}{\bfseries Efeitos colaterais}\\
-         & \\
+         & Armazena as imagens no formato \verb|*.jp2| nas pastas \verb|rate_n|, assim como os ficheiros JSON na pasta \verb|kduOutput|, segundo a seguinte árvore de diretórios:\\
+         & \dirtree{%
+            .1 ./.
+            .2 kduOutput.
+            .3 dices4k.
+            .4 no\_ycbcr.
+            .5 rate\_n\DTcomment{$n$: número de \textit{bits}}.
+            .5 \ldots.
+            .4 ycbcr.
+            .3 diffuseCar4k\DTcomment{\textit{idem}}.
+            .3 piano4k.
+         } \\
         \hline\multicolumn{2}{l}{\bfseries Dependências}\\
-         & Função \verb||; \\
-         & Função \verb||. \\
+        & Função \verb|cod_jpeg2000| (Tabela \ref{tab:cod_jpeg2000});\\
+        & Função \verb|dec_jpeg2000| (Tabela \ref{tab:dec_jpeg2000});\\
+        & Função \verb|psnr| (Tabela \ref{tab:psnr}).\\
+        & \textit{Ver Figura \ref{fig:compress_views}.} \\
         \hline
     \end{tabular}
 \end{table}
 
 
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{cod\_jpeg2000}.}
+    \label{tab:cod_jpeg2000}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|cod_jpeg2000|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo em Python}\\
+         & \mintinline[breaklines]{python}{def cod_jpeg2000(in_path, out_path, ycbcr, rate)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Invoca ao sistema a execução do comando \verb|kdu_compress|, conforme descrito na Secção \ref{ssec::tecno-ferr:tecno-ferr:kdu}. \\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|in_path|: caminho do ficheiro de \textit{input}. \\
+         & \verb|out_path|: caminho do ficheiro de \textit{output}. \\
+         & \hspace{1cm} \textit{Valor por defeito.} ``\verb|out.jp2|''.\\
+         & \verb|ycbcr|: \textit{flag} que indica ao \ac{kdu} se deve ser efetuada uma transformada de cor. \\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|False|.\\
+         & \verb|rate|: número de \textit{bits} por amostra. \\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|1.0|.\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Não aplicável. \\
+        \hline\multicolumn{2}{l}{\bfseries Efeitos colaterais}\\
+         & Gera uma imagem no formato \verb|*.jp2| no diretório definido por \verb|out_path|. \\
+        \hline\multicolumn{2}{l}{\bfseries Dependências}\\
+         & Não aplicável. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{dec\_jpeg2000}.}
+    \label{tab:dec_jpeg2000}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|dec_jpeg2000|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo em Python}\\
+         & \mintinline[breaklines]{python}{def dec_jpeg2000(in_path, out_path, ycbcr, rate)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Invoca ao sistema a execução do comando \verb|kdu_expand|, conforme descrito na Secção \ref{ssec::tecno-ferr:tecno-ferr:kdu}. \\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|in_path|: caminho do ficheiro de \textit{input}. \\
+         & \verb|out_path|: caminho do ficheiro de \textit{output}. \\
+         & \hspace{1cm} \textit{Valor por defeito.} ``\verb|out.jp2|''.\\
+         & \verb|ycbcr|: \textit{flag} que indica ao \ac{kdu} se deve ser efetuada uma transformada de cor. \\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|False|.\\
+         & \verb|rate|: número de \textit{bits} por amostra. \\
+         & \hspace{1cm} \textit{Valor por defeito.} \verb|1.0|.\\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Não aplicável. \\
+        \hline\multicolumn{2}{l}{\bfseries Efeitos colaterais}\\
+         & Gera uma imagem no formato \verb|*.tmp| no diretório definido por \verb|out_path|. \\
+        \hline\multicolumn{2}{l}{\bfseries Dependências}\\
+         & Não aplicável. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Resumo da documentação da função \texttt{psnr}.}
+    \label{tab:psnr}
+    \begin{tabular}{p{1cm} p{10cm}}
+        \hline
+        \multicolumn{2}{l}{\bfseries Nome da função}\\
+         & \verb|psnr|\\
+        \hline
+        \multicolumn{2}{l}{\bfseries Protótipo em Python}\\
+         & \mintinline[breaklines]{python}{def psnr(p1, p2)} \\
+        \hline\multicolumn{2}{l}{\bfseries Descrição}\\
+         & Calcula a métrica de compressão \ac{PSNR} entre duas imagens. \\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Inputs}}\\
+         & \verb|p1|: caminho para a primeira imagem. \\
+         & \verb|p2|: caminho para a segunda imagem. \\
+        \hline\multicolumn{2}{l}{\bfseries \textit{Output}}\\
+         & Valor calculado do \ac{PSNR}. \\
+        \hline\multicolumn{2}{l}{\bfseries Efeitos colaterais}\\
+         & Não aplicável. \\
+        \hline\multicolumn{2}{l}{\bfseries Dependências}\\
+         & Não aplicável. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[scale=.6]{compress_views}
+    \caption{Diagrama de dependências da função \texttt{compress\_views}.}
+    \label{fig:compress_views}
+\end{figure}
 
 
 
@@ -289,8 +426,8 @@ Para a otimização do processo de investigação neste projeto, foram criados d
 \end{enumerate}
 
 
-% [ ] estudar o uso de kdu
-% [ ] automatização de execução dos softwares
+% [X] estudar o uso de kdu
+% [X] automatização de execução dos softwares
 % [ ] implementar script que comprime com e sem transformada de cor, e com bitrates: [0.1, 0.3, 0.6, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0], e descomprime as reconstruções do holograma
 
 
