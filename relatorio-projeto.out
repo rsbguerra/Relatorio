@@ -1,6 +1,6 @@
-\BOOKMARK [0][-]{section*.2}{Conteúdo}{}% 1
-\BOOKMARK [0][-]{section*.3}{Lista\040de\040Figuras}{}% 2
-\BOOKMARK [0][-]{section*.4}{Lista\040de\040Tabelas}{}% 3
+\BOOKMARK [0][-]{section*.3}{Conteúdo}{}% 1
+\BOOKMARK [0][-]{section*.5}{Lista\040de\040Figuras}{}% 2
+\BOOKMARK [0][-]{section*.7}{Lista\040de\040Tabelas}{}% 3
 \BOOKMARK [0][-]{chapter.1}{Introdução}{}% 4
 \BOOKMARK [1][-]{section.1.1}{Enquadramento}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.2}{Motivação}{chapter.1}% 6
@@ -8,36 +8,53 @@
 \BOOKMARK [1][-]{section.1.4}{Organização do Documento}{chapter.1}% 8
 \BOOKMARK [0][-]{chapter.2}{Estado\040da\040Arte}{}% 9
 \BOOKMARK [1][-]{section.2.1}{Introdução}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{Objetivos}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Perspetiva Histórica}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.4}{Conceitos\040Base}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.4.1}{Holografia}{section.2.4}% 14
-\BOOKMARK [3][-]{subsubsection.2.4.1.1}{Princípios de Holografia}{subsection.2.4.1}% 15
-\BOOKMARK [3][-]{subsubsection.2.4.1.2}{Representação de Dados Holográficos}{subsection.2.4.1}% 16
-\BOOKMARK [3][-]{subsubsection.2.4.1.3}{Reconstrução de Holograma}{subsection.2.4.1}% 17
-\BOOKMARK [2][-]{subsection.2.4.2}{Compressão}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.3}{JPEG2000}{section.2.4}% 19
-\BOOKMARK [2][-]{subsection.2.4.4}{Cor}{section.2.4}% 20
-\BOOKMARK [3][-]{subsubsection.2.4.4.1}{RGB}{subsection.2.4.4}% 21
-\BOOKMARK [3][-]{subsubsection.2.4.4.2}{YCBCR}{subsection.2.4.4}% 22
-\BOOKMARK [1][-]{section.2.5}{Estado\040da\040Arte}{chapter.2}% 23
-\BOOKMARK [1][-]{section.2.6}{Conclusões}{chapter.2}% 24
-\BOOKMARK [0][-]{chapter.3}{Tecnologias\040e\040Ferramentas\040Utilizadas}{}% 25
-\BOOKMARK [1][-]{section.3.1}{Introdução}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.2}{Tecnologias\040e\040Ferramentas}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.2.1}{Software de Reconstrução de Hologramas e sua Transcrição para Python}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.2}{Kakadu\040Software}{section.3.2}% 29
-\BOOKMARK [1][-]{section.3.3}{Materiais\040Utilizados}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.3.1}{Hardware}{section.3.3}% 31
-\BOOKMARK [2][-]{subsection.3.3.2}{Hologramas}{section.3.3}% 32
-\BOOKMARK [1][-]{section.3.4}{Conclusões}{chapter.3}% 33
-\BOOKMARK [0][-]{chapter.4}{Etapas de Desenvolvimento e Implementação}{}% 34
-\BOOKMARK [1][-]{section.4.1}{Introdução}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.2}{Reconstrução de hologramas}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.3}{Compressão do hologramas}{chapter.4}% 37
-\BOOKMARK [1][-]{section.4.4}{Medida da qualidade de reconstrução}{chapter.4}% 38
-\BOOKMARK [1][-]{section.4.5}{Visualização de dados}{chapter.4}% 39
-\BOOKMARK [1][-]{section.4.6}{Conclusões}{chapter.4}% 40
-\BOOKMARK [0][-]{chapter.5}{Conclusões e Trabalho Futuro}{}% 41
-\BOOKMARK [1][-]{section.5.1}{Conclusões Principais}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.2}{Trabalho\040Futuro}{chapter.5}% 43
+\BOOKMARK [1][-]{section.2.2}{Perspetiva Histórica}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.3}{Conceitos\040Base}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.3.1}{Holografia}{section.2.3}% 13
+\BOOKMARK [3][-]{subsubsection.2.3.1.1}{Princípios de Holografia}{subsection.2.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.2.3.1.2}{Representação de Dados Holográficos}{subsection.2.3.1}% 15
+\BOOKMARK [3][-]{subsubsection.2.3.1.3}{Reconstrução de Holograma}{subsection.2.3.1}% 16
+\BOOKMARK [2][-]{subsection.2.3.2}{Compressão}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.3}{JPEG2000}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.4}{Cor}{section.2.3}% 19
+\BOOKMARK [3][-]{subsubsection.2.3.4.1}{RGB}{subsection.2.3.4}% 20
+\BOOKMARK [3][-]{subsubsection.2.3.4.2}{YCbCr}{subsection.2.3.4}% 21
+\BOOKMARK [1][-]{section.2.4}{Estado\040da\040Arte}{chapter.2}% 22
+\BOOKMARK [1][-]{section.2.5}{Conclusões}{chapter.2}% 23
+\BOOKMARK [0][-]{chapter.3}{Tecnologias\040e\040Ferramentas\040Utilizadas}{}% 24
+\BOOKMARK [1][-]{section.3.1}{Introdução}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Tecnologias\040e\040Ferramentas}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{Software de Reconstrução de Hologramas e sua Transcrição para Python}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.2}{Kakadu\040Software}{section.3.2}% 28
+\BOOKMARK [1][-]{section.3.3}{Materiais\040Utilizados}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.1}{Hardware}{section.3.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.2}{Hologramas}{section.3.3}% 31
+\BOOKMARK [1][-]{section.3.4}{Conclusões}{chapter.3}% 32
+\BOOKMARK [0][-]{chapter.4}{Etapas de Desenvolvimento e Implementação}{}% 33
+\BOOKMARK [1][-]{section.4.1}{Introdução}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.2}{Reconstrução dos Hologramas}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.3}{Compressão dos Hologramas Reconstruídos}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.3.1}{Breve\040Estudo\040do\040Kakadu\040Software}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.2}{Implementação e Execução do Script de Compressão}{section.4.3}% 38
+\BOOKMARK [2][-]{subsection.4.3.3}{Automatização dos Scripts}{section.4.3}% 39
+\BOOKMARK [1][-]{section.4.4}{Determinação das Métricas de Compressão}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.1}{Criação de gráficos}{section.4.4}% 41
+\BOOKMARK [1][-]{section.4.5}{Conclusões}{chapter.4}% 42
+\BOOKMARK [0][-]{chapter.5}{Testes\040e\040Resultados}{}% 43
+\BOOKMARK [1][-]{section.5.1}{Introdução}{chapter.5}% 44
+\BOOKMARK [1][-]{section.5.2}{Testes}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.3}{Resultados}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.4}{Discussão}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.5}{Conclusões}{chapter.5}% 48
+\BOOKMARK [0][-]{chapter.6}{Conclusões e Trabalho Futuro}{}% 49
+\BOOKMARK [1][-]{section.6.1}{Conclusões Principais}{chapter.6}% 50
+\BOOKMARK [1][-]{section.6.2}{Trabalho\040Futuro}{chapter.6}% 51
+\BOOKMARK [0][-]{appendix.A}{Documentação de Funções}{}% 52
+\BOOKMARK [1][-]{section.A.1}{Função load_hologram}{appendix.A}% 53
+\BOOKMARK [1][-]{section.A.2}{Função propagate_asm}{appendix.A}% 54
+\BOOKMARK [1][-]{section.A.3}{Função reconst_hologram}{appendix.A}% 55
+\BOOKMARK [1][-]{section.A.4}{Função reconst_16views}{appendix.A}% 56
+\BOOKMARK [1][-]{section.A.5}{Função compress_views}{appendix.A}% 57
+\BOOKMARK [1][-]{section.A.6}{Função cod_jpeg2000}{appendix.A}% 58
+\BOOKMARK [1][-]{section.A.7}{Função dec_jpeg2000}{appendix.A}% 59
+\BOOKMARK [1][-]{section.A.8}{Função psnr}{appendix.A}% 60
