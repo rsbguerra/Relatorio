@@ -7,7 +7,7 @@
 Para o sucesso deste projeto foi essencial delinear uma estratégia de investigação. Esta divide-se em 3 partes: reconstrução dos hologramas, compressão dos hologramas reconstruídos, e determinação das métricas de compressão. A cada uma destas fases atribuíram-se objetivos para a sua profícua execução:
 
 \begin{enumerate}
-    \item Reconstrução dos hologramas:
+    \item \textit{Reconstrução dos hologramas} (\ref{obj:reconstruir_vistas}\textordmasculine~objetivo secundário do projeto):
     \begin{enumerate}
         \item Estudar a holografia;
         \item Estudar as funções originais em MATLAB do Projecto JPEG Pleno;
@@ -16,14 +16,14 @@ Para o sucesso deste projeto foi essencial delinear uma estratégia de investiga
         \item Desenvolver um \textit{script} para reconstruir cada holograma em 16 vistas distintas.
     \end{enumerate}
 
-    \item Compressão dos hologramas reconstruídos:
+    \item \textit{Compressão dos hologramas reconstruídos} (\ref{obj:comprimir}\textordmasculine~objetivo secundário):
     \begin{enumerate}
         \item Estudar o uso do \ac{kdu};
         \item Automatizar a execução dos \textit{scripts} e \textit{softwares} envolvidos;
         \item Implementar um \textit{script} para compressão (com e sem transformada de cor em diferentes \textit{bitrates}) e descompressão dos hologramas reconstruídos.
     \end{enumerate}
 
-    \item Determinação das métricas de compressão:
+    \item \textit{Determinação das métricas de compressão} (a fim de alcançar o \ref{obj:avaliar_psnr}\textordmasculine~objetivo secundário, objeto de estudo do Capítulo \ref{ch::test-result}):
     \begin{enumerate}
         \item Calcular o débito com a métrica \ac{PSNR} entre os hologramas originais e as imagens comprimidas;
         \item Determinar o melhor método de armazenamento dos débitos calculados;
