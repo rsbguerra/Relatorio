@@ -105,36 +105,43 @@ Para este projeto, dois computadores em particular executaram as várias iteraç
 \subsection{Hologramas}
 \label{ssec::tecno-ferr:materiais:hologramas}
 
-Os hologramas reconstruidos com o \textit{software} desenvolvido no âmbito deste projeto são fornecidos pelo \textit{Institute of Research \& Technology b<>com}. De entre os disponíveis, foram utilizados os seguintes hologramas com as respetivas características:
+Os hologramas reconstruidos com o \textit{software} desenvolvido no âmbito deste projeto são fornecidos pelo \textit{Institute of Research \& Technology b<>com}. De entre os disponíveis, foram utilizados os seguintes hologramas com respetivas características resumidas na Tabela \ref{tab:holo-specs}:
+
 \begin{enumerate}
-    \item \texttt{Dices4k} (Figura \ref{fig:bcom_dices4k}):
-          \begin{itemize}
-              \item Resolução: 4096$\times$4096;
-              \item \textit{Pixel pitch}: \SI{0.4}{\micro\meter};
-              \item Comprimento de onda vermelho: \SI{640}{\nano\meter};
-              \item Comprimento de onda verde: \SI{532}{\nano\meter};
-              \item Comprimento de onda azul: \SI{473}{\nano\meter};
-              \item Localização da cena: entre \SI{0.164}{} e \SI{0.328}{\centi\meter}.
-          \end{itemize}
-    \item \texttt{DiffuseCar4k} (Figura \ref{fig:bcom_diffuseCar4k}):
-          \begin{itemize}
-              \item Resolução: 4096$\times$4096
-              \item \textit{Pixel pitch}: \SI{0.4}{\micro\meter};
-              \item Comprimento de onda vermelho: \SI{640}{\nano\meter};
-              \item Comprimento de onda verde: \SI{532}{\nano\meter};
-              \item Comprimento de onda azul: \SI{473}{\nano\meter};
-              \item Localização da cena: entre \SI{0.11}{} e \SI{0.25}{\centi\meter}.
-          \end{itemize}
-    \item \texttt{Piano4k} (Figura \ref{fig:bcom_piano4k}):
-          \begin{itemize}
-              \item Resolução: 4096$\times$4096
-              \item \textit{Pixel pitch}: \SI{0.4}{\micro\meter};
-              \item Comprimento de onda vermelho: \SI{640}{\nano\meter};
-              \item Comprimento de onda verde: \SI{532}{\nano\meter};
-              \item Comprimento de onda azul: \SI{473}{\nano\meter};
-              \item Localização da cena: entre \SI{0.17}{} and \SI{0.313}{\centi\meter}.
-          \end{itemize}
+    \item \texttt{Dices4k} (Figura \ref{fig:bcom_dices4k});
+    \item \texttt{DiffuseCar4k} (Figura \ref{fig:bcom_diffuseCar4k});
+    \item \texttt{Piano4k} (Figura \ref{fig:bcom_piano4k}).
 \end{enumerate}
+
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Especificações dos hologramas.}
+    \label{tab:holo-specs}
+    \begin{tabular}{r c c c c c c}
+        \toprule
+        Holograma & \verb|size| & \verb|pitch| & \verb|r| & \verb|g| & \verb|b| & \verb|z| \\
+        \midrule
+        \texttt{Dices4k} & 4096$\times$4096 & \SI{0.4}{} & \SI{640}{} & \SI{532}{} & \SI{473}{} & \SI{0.164}{} -- \SI{0.328}{} \\
+        %\hline
+        \texttt{DiffuseCar4k} & 4096$\times$4096 & \SI{0.4}{} & \SI{640}{} & \SI{532}{} & \SI{473}{} & \SI{0.110}{} -- \SI{0.250}{} \\
+        %\hline
+        \texttt{Piano4k} & 4096$\times$4096 & \SI{0.4}{} & \SI{640}{} & \SI{532}{} & \SI{473}{} & \SI{0.170}{} -- \SI{0.313}{} \\
+        \bottomrule
+    \end{tabular}
+    %\bigskip
+    \subcaption*{}
+    \begin{tabular}{>{\ttfamily}r @{~:~~} l l}
+        size & Resolução & (em pixeis) \\
+        pitch & \textit{Pixel pitch} & (em \SI{}{\micro\meter}) \\
+        r & Comprimento de onda vermelho & (em \SI{}{\nano\meter}) \\
+        g & Comprimento de onda verde & (em \SI{}{\nano\meter}) \\
+        b & Comprimento de onda azul & (em \SI{}{\nano\meter}) \\
+        z & Intervalo de localização da cena & (em \SI{}{\centi\meter}) \\
+    \end{tabular}
+\end{table}
+
+
 
 \begin{figure}
     \centering
