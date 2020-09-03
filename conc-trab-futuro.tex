@@ -4,28 +4,29 @@
 \section{Conclusões Principais}
 \label{sec::conclusao:principal}
 
-%Esta secção contém a resposta à questão: \\
-%\emph{Quais foram as conclusões princípais a que o(a) aluno(a) chegou no fim deste trabalho?}
+Com o término da investigação apresentada, foram alcançadas as seguintes etapas:
+\begin{itemize}
+    \item Implementação de um conjunto de \textit{scripts} para a reconstrução, compressão e descompressão de hologramas com cor em multivista;
+    \item Efetiva reconstrução de 3 hologramas em 16 vistas distintas;
+    \item Utilização do codificador JPEG2000 para a compressão dos hologramas reconstruídos;
+    \item Estudo dos hologramas comprimidos com a métrica \ac{PSNR}.
+\end{itemize}
 
-TODO
+A frutífera conclusão destas etapas permitiu o alcance dos objetivos inicialmente traçados para este projeto.
 
-Após os resultados expostos na Secção \ref{sec::test-result:result} e a sua respetiva discussão na Secção \ref{sec::test-result:discussao}, podem-se enumerar \textbf{X} conclusões:
+Neste sentido, e após os resultados expostos na Secção \ref{sec::test-result:result} e a sua respetiva discussão na Secção \ref{sec::test-result:discussao}, podem-se enumerar as seguintes conclusões acerca do uso do formato JPEG2000 para a compressão de hologramas no plano do objeto:
 
 \begin{enumerate}
     \item O recurso à transformada de cor não é desejável;
-    \item O uso de maiores \textit{bitrates} produz hologramas comprimidos de melhor qualidade;
-    \item O uso de maiores \textit{bitrates} produz hologramas comprimidos de qualidade mais consistentes para diferentes vistas.
+    \item O uso de maiores \textit{bitrates} produz hologramas comprimidos de melhor e mais consistente qualidade para diferentes vistas.
+    \item Considerando que um \ac{PSNR} entre \SI{30}{\decibel} e \SI{50}{\decibel} é assumido como um intervalo que indica qualidade aceitável (\textit{i.e.} perdas visualmente impercetíveis) para multimédia comprimida em formatos com perda, débitos tão baixos quanto \SI{0.3}{} revelaram-se suficientes para uma compressão satisfatória.
 \end{enumerate}
 
-% Para os hologramas estudados, propõe-se o uso de um \textit{bitrate} mínimo de \SI{2.5}{} para a compressão com recurso ao formato JPEG2000.
+Por consequência, e a fim de responder ao objetivo primário do presente projeto, conclui-se que o formato JPEG2000, no âmbito do Projeto JPEG Pleno, é adequado para a compressão de hologramas com cor em multivista.
 
+% Welstead, Stephen T. (1999). Fractal and wavelet image compression techniques. SPIE Publication. pp. 155–156. ISBN 978-0-8194-3503-3.
 
-% QUESTÕES:
-% Há algum débito mínimo comum aceitável?
-% Os hologramas comprimidos são de qualidade aceitável?
-% ...
-
-
+% Raouf Hamzaoui, Dietmar Saupe (May 2006). Barni, Mauro (ed.). Fractal Image Compression. Document and Image Compression. 968. CRC Press. pp. 168–169. ISBN 9780849335563. Retrieved 5 April 2011.
 
 
 \section{Trabalho Futuro}
@@ -36,9 +37,18 @@ Após os resultados expostos na Secção \ref{sec::test-result:result} e a sua r
 %\emph{O que é que seria interessante fazer, mas não foi feito por não ser exatamente o objetivo deste trabalho?}\\
 %\emph{Em que outros casos ou situações ou cenários -- que não foram estudados no contexto deste projeto por não ser seu objetivo -- é que o trabalho aqui descrito pode ter aplicações interessantes e porque?}
 
-TODO
+No âmbito do projeto inicialmente proposto, foram cumpridos todos os objetivos delineados.
+
+Contudo, durante a investigação, foi notória a ineficiência do uso de uma única \textit{thread} conforme implementado nos \textit{scripts} desenvolvidos. Seria, portanto, interessante o uso de \textit{multithreading} a fim de alcançar uma menor tempo de execução e uma vasta melhoria no uso dos recursos disponibilizados pelos \textit{hardwares} utilizados (mencionados na Secção \ref{ssec::tecno-ferr:materiais:hardware}). Outra alternativa seria o uso de computação paralela com recurso a placas gráficas, a par da técnica utilizada pelos investigadores do \textit{Institute of Research \& Technology b<>com} (\textit{e.g.} com recurso à tecnologia \ac{CUDA}).
+
+% // TODO: Fazer referência bibliográfica
 
 A par do concluído na Secção \ref{sec::conclusao:principal}, propõe-se o estudo alargado a mais hologramas para se poder determinar se existe um \textit{bitrate} mínimo comum  aceitável ou se este deve sempre depender do holograma original.
 
 No mesmo sentido, caso o débito dependa do holograma, é plausível a pertinência de um estudo sobre métodos e métricas para determinação ótima do débito aquando da compressão.
+
+Ademais, não tendo sido objetivo do presente projeto, é de alto interesse o estudo da redução do \textit{bitrate} utilizado na compressão a fim de alcançar hologramas comprimidos sem perda de qualidade percetível e um tamanho de ficheiro o mais reduzido possível.
+
+Por fim, o estudo da determinação das vistas com \ac{PSNR} ótimo é uma natural extensão do presente projeto.
+
 
