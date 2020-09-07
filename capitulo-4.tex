@@ -68,13 +68,6 @@ Estas funções foram compiladas num único \textit{script} Python. A fim de cum
     \item \verb|pupil_size|: Lista que contém o tamanho da janela de reconstrução (em pixeis).
 \end{itemize}
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[scale=.6]{reconst_16views}
-    \caption{Diagrama de dependências da função \texttt{reconst\_16views}.}
-    \label{fig:reconst_16views}
-\end{figure}
-
 Todavia, havendo uma transcrição de funções entre linguagens de programação, exigiu-se uma forma de comprovar que as funções transcritas em Python são equivalentes às originais em MATLAB. Para este fim, delineou-se a seguinte estratégia:
 
 \begin{enumerate}
@@ -132,13 +125,6 @@ Conforme visto anteriormente, a ferramenta \ac{kdu} é a ferramenta eleita para 
 \end{enumerate}
 
 De notar os \textit{bitrates} testados: \SI{0.1}{}, \SI{0.3}{}, \SI{0.6}{}, \SI{1.0}{}, \SI{1.5}{}, \SI{2.0}{}, \SI{2.5}{}, \SI{3.0}{}, \SI{3.5}{}, \SI{4.0}{}, \SI{4.5}{} e \SI{5.0}{}. Há ainda a referir a realização dos testes com e sem transformada de cor.
-
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[scale=.6]{compress_views}
-    \caption{Diagrama de dependências da função \texttt{compress\_views}.}
-    \label{fig:compress_views}
-\end{figure}
 
 Por fim, de forma a facilitar a extração dos resultados pretendidos segundo o objetivo primário do projeto (Secção \ref{sec::intro:objs}), é gerado um ficheiro \ac{JSON} por cada holograma. Este tem a seguinte estrutura:
 
