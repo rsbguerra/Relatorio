@@ -59,7 +59,7 @@ Destacam-se as tabelas e figuras que expõem os resultados da investigação. Po
 
 \begin{table}[!htbp]
     \centering
-    \caption{Resultados da métrica \ac{PSNR} para o holograma \texttt{dices4k}.}
+    \caption{Resultados da métrica \acs{PSNR} para o holograma \texttt{dices4k}.}
     \label{tab:res-dices4k}
     \begin{tabular}{x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm}}
         \toprule
@@ -92,14 +92,14 @@ Destacam-se as tabelas e figuras que expõem os resultados da investigação. Po
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{res_dices4k}
-    \caption{Variação da média da métrica \ac{PSNR} relativo ao holograma \texttt{dices4k}. \textit{Valor maior significa melhor qualidade.}}
+    \caption[Variação da média do \acs{PSNR} relativo ao holograma \texttt{dices4k}.]{Variação da média da métrica \acs{PSNR} relativo ao holograma \texttt{dices4k}. \textit{Valor maior significa melhor qualidade.}}
     \label{fig:res-dices4k}
 \end{figure}
 
 
 \begin{table}[!htbp]
     \centering
-    \caption{Resultados da métrica \ac{PSNR} para o holograma \texttt{diffuseCar4k}.}
+    \caption{Resultados da métrica \acs{PSNR} para o holograma \texttt{diffuseCar4k}.}
     \label{tab:res-diffusecar4k}
     \begin{tabular}{x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm}}
         \toprule
@@ -132,14 +132,14 @@ Destacam-se as tabelas e figuras que expõem os resultados da investigação. Po
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{res_diffuseCar4k}
-    \caption{Variação da média da métrica \ac{PSNR} relativo ao holograma \texttt{diffuseCar4k}. \textit{Valor maior significa melhor qualidade.}}
+    \caption[Variação da média do \acs{PSNR} relativo ao holograma \texttt{diffuseCar4k}.]{Variação da média da métrica \acs{PSNR} relativo ao holograma \texttt{diffuseCar4k}. \textit{Valor maior significa melhor qualidade.}}
     \label{fig:res-diffusecar4k}
 \end{figure}
 
 
 \begin{table}[!htbp]
     \centering
-    \caption{Resultados da métrica \ac{PSNR} para o holograma \texttt{piano4k}.}
+    \caption{Resultados da métrica \acs{PSNR} para o holograma \texttt{piano4k}.}
     \label{tab:res-piano4k}
     \begin{tabular}{x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm} x{2.2cm}}
         \toprule
@@ -172,7 +172,7 @@ Destacam-se as tabelas e figuras que expõem os resultados da investigação. Po
 \begin{figure}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{res_piano4k}
-    \caption{Variação da média da métrica \ac{PSNR} relativo ao holograma \texttt{piano4k}. \textit{Valor maior significa melhor qualidade.}}
+    \caption[Variação da média do \acs{PSNR} relativo ao holograma \texttt{piano4k}.]{Variação da média da métrica \acs{PSNR} relativo ao holograma \texttt{piano4k}. \textit{Valor maior significa melhor qualidade.}}
     \label{fig:res-piano4k}
 \end{figure}
 
@@ -182,7 +182,7 @@ Destacam-se as tabelas e figuras que expõem os resultados da investigação. Po
 
 Tendo em conta que quanto maior o valor do \ac{PSNR} melhor será a qualidade da imagem após a compressão, uma análise visual aos gráficos das figuras \ref{fig:res-dices4k}, \ref{fig:res-diffusecar4k} e \ref{fig:res-piano4k} permite facilmente observar a diminuição da qualidade de todos os três hologramas testados ao ser utilizada uma transformada de cor de \ac{RGB} para YCbCr.
 
-Há ainda a referir, pela observação das mesmas figuras, que a qualidade dos hologramas comprimidos aumenta com a subida do \textit{bitrate}.
+Há ainda a referir, pela observação das mesmas figuras, que a qualidade dos hologramas comprimidos aumenta com a subida do débito.
 
 %TODO: REVER ESTE PARAGRAFO:\\
 %\textbf{
@@ -199,10 +199,22 @@ Do exposto, 3 questões colocam-se e que são meritórias de discussão no âmbi
     \item \textit{Qual o motivo para a transformada de cor levar à significativa redução de qualidade após compressão?}\newline
     A transformada de cor de \ac{RGB} para YUV 4:2:0 implica perda de informação nos canais G (\textit{Green}) e B (\textit{Blue}) a fim de tirar partido das características da visão humana. Por si só, esta transformada de cor torna a perda de informação impercetível ao olho humano, sendo esta de uma aparente qualidade equivalente.\newline
     Todavia, a compressão no formato JPEG2000 implica uma nova perda de informação uma vez que este é um formato de compressão com perdas.\newline
-    Teoriza-se que a aplicação consecutiva de dois processos que implicam perdas de informação levem a uma significativa redução da qualidade final do holograma comprimido, resultando em valores de \ac{PSNR} claramente inferiores.
+    
+    
+    % COMENTÁRIO
+    % Na realidade a transformada de cor de RGB para YUV420 em imagens clássicas não implica grandes perdas a nível do PSNR dada a grande correlação dos pixeis no que diz respeito aos canais U e V, no entanto no caso destes hologramas, em que existe grande quantidade de speckle, mesmo nas vistas, esta correlação diminui e existem perdas neste processo de se acentuam com as etapas seguintes da codificação.
+
+    % ORIGINAL
+    % Teoriza-se que a aplicação consecutiva de dois processos que implicam perdas de informação levem a uma significativa redução da qualidade final do holograma comprimido, resultando em valores de \ac{PSNR} claramente inferiores.
+
+    % NOVA VERSÃO (proposta)
+    Porquanto a transformada de cor de RGB para YUV 4:2:0 não se traduz numa redução significativa em imagens clássicas, tal não pode ser dito para a holografia. A quantidade de \textit{speckle} (\textit{i.e.} de ruído) nos hologramas leva a que haja uma diminuição da correlação %entre os píxeis originais e os píxeis após a transformada de cor (nomeadamente os canais U e V).
+    entre píxeis vizinhos nos canais U e V, levando a que a redução destes coeficientes não seja mais negligenciável no que diz respeito à qualidade final. Tal acaba por se traduzir numa diminuição mais significativa do valor de \ac{PSNR} uma vez que existem perdas que se acentuam nos passos seguintes da compressão.
+
+    É, portanto, teorizado que, no caso dos hologramas, a aplicação consecutiva de dois processos que implicam perdas de informação levem a uma significativa redução da qualidade final do holograma comprimido, resultando em valores de \ac{PSNR} claramente inferiores.
 
     \item \textit{Por que razão o desvio padrão se revela menor em \emph{bitrates} maiores?}\newline
-    O aumento da qualidade dos hologramas comprimidos com \textit{bitrates} maiores (conforme observado anteriormente) dever-se-á explicar pela maior quantidade de informação armazenada por consequência. Tal leva à existência de menos ruído nas imagens comprimidas, o que implica uma maior aproximação face à imagem original.\newline
+    O aumento da qualidade dos hologramas comprimidos com \textit{bitrates} maiores (conforme observado anteriormente) dever-se-á explicar pela maior quantidade de informação armazenada. Tal leva à existência de menos ruído nas imagens comprimidas, o que implica uma maior aproximação face à imagem original.\newline
     A par do aumento do \ac{PSNR}, é de denotar que o aumento da informação armazenada deverá implica igualmente uma maior consistência na qualidade dos hologramas comprimidos, independentemente da vista tomada.\newline
     Ora, estatisticamente, uma maior consistência dos dados traduz-se na diminuição do desvio padrão.
 

@@ -1,10 +1,13 @@
+% COMENTÁRIO GERAL
+% da relação qualidadxe débito…já atrás tinha visto este termo de “determinação das métricas, mas é determinação da relação qualidade - débito usando a métrica PSNR para o cálculo da qualidade
+
 \chapter{Etapas de Desenvolvimento e Implementação}
 \label{ch::imp-test}
 
 \section{Introdução}
 \label{sec::imp-test:intro}
 
-Para o sucesso deste projeto foi essencial delinear uma estratégia de investigação. Esta divide-se em 3 partes: reconstrução dos hologramas, compressão dos hologramas reconstruídos, e determinação das métricas de compressão. A cada uma destas fases atribuíram-se objetivos para a sua profícua execução:
+Para o sucesso deste projeto foi essencial delinear uma estratégia de investigação. Esta divide-se em 3 partes: reconstrução dos hologramas, compressão dos hologramas reconstruídos, e determinação da relação qualidade-débito da compressão. A cada uma destas fases atribuíram-se objetivos para a sua profícua execução:
 
 \begin{enumerate}
     \item \textit{Reconstrução dos hologramas} (\ref{obj:reconstruir_vistas}\textordmasculine~objetivo secundário do projeto):
@@ -23,9 +26,9 @@ Para o sucesso deste projeto foi essencial delinear uma estratégia de investiga
         \item Implementar um \textit{script} para compressão (com e sem transformada de cor em diferentes \textit{bitrates}) e descompressão dos hologramas reconstruídos.
     \end{enumerate}
 
-    \item \textit{Determinação das métricas de compressão} (a fim de alcançar o \ref{obj:avaliar_psnr}\textordmasculine~objetivo secundário, objeto de estudo do Capítulo \ref{ch::test-result}):
+    \item \textit{Determinação da relação qualidade-débito da compressão} (a fim de alcançar o \ref{obj:avaliar_psnr}\textordmasculine~objetivo secundário, objeto de estudo do Capítulo \ref{ch::test-result}):
     \begin{enumerate}
-        \item Calcular o débito com a métrica \ac{PSNR} entre os hologramas originais e as imagens comprimidas;
+        \item Calcular a relação qualidade-débito usando a métrica \ac{PSNR} entre os hologramas originais e as imagens comprimidas;
         \item Determinar o melhor método de armazenamento dos débitos calculados;
         \item Implementar o \textit{output} dos resultados no método selecionado;
         \item Gerar gráficos dos resultados.
@@ -41,7 +44,7 @@ As Secções subsequentes expõem o trabalho desenvolvido neste sentido e a Figu
         [Diagrama do processo efetuado sobre um holograma para obtenção dos resultados.]
         {
             Diagrama do processo efetuado sobre um holograma para obtenção dos resultados.\\
-            O caminho vermelho/amarelo representa o trajeto principal pelo qual o holograma sofre processamento. Os caminhos verdes detalham os processos intermédios correspondentes a um determinado processo do trajeto principal (a entrada é dada por ``\textit{call}'' e o retorno é dado por ``\textit{return}''). As dependências entre as principais funções são indicadas por ``\textit{Use}''. A azul estão os ficheiros externos auxiliares. \\
+            O caminho vermelho/amarelo representa o trajeto principal pelo qual o holograma é processado. Os caminhos verdes detalham os processos intermédios correspondentes a um determinado processo do trajeto principal (a entrada é dada por ``\textit{call}'' e o retorno é dado por ``\textit{return}''). As dependências entre as principais funções são indicadas por ``\textit{Use}''. A azul estão os ficheiros externos auxiliares. \\
         }
     \label{fig:projeto}
 \end{figure}
@@ -89,7 +92,7 @@ Todavia, havendo uma transcrição de funções entre linguagens de programaçã
     \end{enumerate}
 \end{enumerate}
 
-Com o \textit{script} devidamente implementado e testado, prosseguiu-se com a seguinte fase do projeto relativo à compressão dos hologramas agora reconstruídos.
+Com o \textit{script} devidamente implementado e testado, prosseguiu-se com a fase seguinte do projeto relativo à compressão dos hologramas agora reconstruídos.
 
 
 \section{Compressão dos Hologramas Reconstruídos}
@@ -98,9 +101,9 @@ Com o \textit{script} devidamente implementado e testado, prosseguiu-se com a se
 % [X] automatização de execução dos softwares
 % [X] implementar script que comprime com e sem transformada de cor, e com bitrates: [0.1, 0.3, 0.6, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0], e descomprime as reconstruções do holograma
 
-Após a reconstrução dos hologramas em multivista, segue-se o teste ao formato JPEG2000 através de compressão e descompressão de forma a comparar com a reconstrução do holograma original (cuja métrica será abordada na Secção \ref{sec::imp-test:psnr}).
+Após a reconstrução dos hologramas em multivista, segue-se o teste à norma JPEG2000 através de compressão e descompressão de forma a comparar com a reconstrução do holograma original (cuja métrica usada para comparação será abordada na Secção \ref{sec::imp-test:psnr}).
 
-Conforme a estratégia delineada na Secção \ref{sec::imp-test:intro}, esta fase do projeto envolveu o estudo da ferramenta \ac{kdu}, a implementação dos \textit{scripts} e o cálculo das métricas.
+Conforme a estratégia delineada na Secção \ref{sec::imp-test:intro}, esta fase do projeto envolveu o estudo da ferramenta \ac{kdu}, a implementação dos \textit{scripts} e o cálculo do \ac{PSNR}.
 
 \subsection{Breve Estudo do \textit{Kakadu Software}}
 \label{ssec::imp-test:holo-compress:estudo-kdu}
@@ -120,7 +123,7 @@ Conforme visto anteriormente, a ferramenta \ac{kdu} é a ferramenta eleita para 
         É feita uma chamada ao sistema do comando \verb|kdu_compress|.\\ Esta encontra-se encapsulada na função auxiliar \verb|cod_jpeg2000| (Tabela \ref{tab:cod_jpeg2000}).
     \item \textit{Descompressão do holograma agora comprimido.} \\
         É feita uma chamada ao sistema do comando \verb|kdu_expand|.\\ Esta encontra-se encapsulada na função auxiliar \verb|dec_jpeg2000| (Tabela \ref{tab:dec_jpeg2000}).
-    \item \textit{Cálculo do débito através de uma métrica de compressão.} \\
+    \item \textit{Cálculo da relação qualidade-débito através de uma métrica de compressão.} \\
         O holograma original e o holograma agora descomprimido são comparados com recurso à métrica \ac{PSNR} (Secção \ref{sec::imp-test:psnr}).\\ Esta operação é realizada pela função auxiliar \verb|psnr| (Tabela \ref{tab:psnr}).
 \end{enumerate}
 
@@ -167,21 +170,23 @@ Para a otimização do processo de investigação neste projeto, foram criados d
 \end{enumerate}
 
 
-\section{Determinação das Métricas de Compressão}
+\section{Determinação da Relação Qualidade Débito}
 \label{sec::imp-test:psnr}
+
+% TODO: substituir 'métrica' por relação qualidade débito
 
 % [X] calcular o débito com a métrica PSNR entre o holograma original e a imagem comprimida
 % [X] estudar qual a melhor forma de guardar os débitos calculados
 % [X] implementar no script a escrita dos dados num ficheiro json
 % [X] a partir dos ficheiros json gerados, criar gráficos para apresentar os resultados com uso da biblioteca matplotlib.pyplot
 
-Na sequência do processo de compressão e descompressão no formato JPEG2000, e conforme previamente introduzido na Secção \ref{ssec::imp-tes:holo-compress:script}, a determinação das métricas de compressão constituem a última fase da investigação a fim destes resultados poderem ser escrutinados no Capítulo \ref{ch::test-result}.
+Na sequência do processo de compressão e descompressão no formato JPEG2000, e conforme previamente introduzido na Secção \ref{ssec::imp-tes:holo-compress:script}, a determinação da relação qualidade-débito da compressão constitui a última fase da investigação a fim destes resultados poderem ser escrutinados no Capítulo \ref{ch::test-result}.
 
 Variadas métricas estão disponíveis para se poder comparar amostras e, no caso do presente projeto, avaliar a qualidade do holograma após compressão no formato JPEG2000. De entre as métricas existentes, foi eleita a \acf{PSNR} por indicação da professora orientadora, a qual está envolvida no Projeto JPEG Pleno.
 
 Conforme introduzido na Secção \ref{ssec::imp-tes:holo-compress:script}, foi utilizada uma função auxiliar \verb|psnr| (Tabela \ref{tab:psnr}), invocada pela função principal \verb|compress_views| (Tabela \ref{tab:compress_views}). Este método de implementação foi escolhido para fins de eficiência de armazenamento.
 
-Uma vez que não é mandatório armazenar os hologramas rescontruídos após compressão, sendo apenas do nosso interesse as métricas finais a si referentes, a função \verb|dec_jpeg2000| exporta o holograma descomprimido num ficheiro temporário \verb|temp.ppm|. Este é utilizado de seguida pela função \verb|psnr| para cálculo do \ac{PSNR} (sendo os resultados armazenados num ficheiro \ac{JSON}), sendo de seguida eliminado.
+Uma vez que não é mandatório armazenar os hologramas rescontruídos após compressão, sendo apenas do nosso interesse os valores de \ac{PSNR} finais a si referentes, a função \verb|dec_jpeg2000| exporta o holograma descomprimido num ficheiro temporário \verb|temp.ppm|. Este é utilizado de seguida pela função \verb|psnr| para cálculo do \ac{PSNR} (sendo os resultados armazenados num ficheiro \ac{JSON}), sendo de seguida eliminado.
 
 
 \subsection{Criação de gráficos}
@@ -189,7 +194,7 @@ Uma vez que não é mandatório armazenar os hologramas rescontruídos após com
 
 O ficheiro \ac{JSON} gerado (descrito na Secção \ref{ssec::imp-tes:holo-compress:script}) é posteriormente carregado num novo \textit{script} Python, especificamente implementado para gerar gráficos em si baseados para mais fácil visualização, análise e discussão (Capítulo \ref{ch::test-result}). Este \textit{script} recorre à biblioteca \verb|matplotlib.pyplot|.
 
-A geração de um gráfico por holograma por parte deste \textit{script} marca o fim do processo de investigação relativo à manipulação dos hologramas e extração de métricas.
+A geração de um gráfico por holograma por parte deste \textit{script} marca o fim do processo de investigação relativo à manipulação dos hologramas e extração dos valores de \ac{PSNR}.
 
 
 \section{Conclusões}
