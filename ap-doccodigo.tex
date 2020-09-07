@@ -12,7 +12,7 @@
 
 \begin{table}[!hp]
     \centering
-    \caption{Documentação da função \texttt{load\_hologram}.}
+    \caption[Documentação da função \texttt{load\_hologram}]{Documentação da função \texttt{load\_hologram}\cite{Gilles2018}.}
     \label{tab:load_hologram}
     \begin{tabular}{p{1cm} p{11.5cm}}
         \hline
@@ -46,7 +46,7 @@
 
 \begin{table}[!hp]
     \centering
-    \caption{Documentação da função \texttt{propagate\_asm}.}
+    \caption[Documentação da função \texttt{propagate\_asm}]{Documentação da função \texttt{propagate\_asm}\cite{Gilles2018}.}
     \label{tab:propagate_asm}
     \begin{tabular}{p{1cm} p{11.5cm}}
         \hline
@@ -82,7 +82,7 @@
 
 \begin{table}[!hp]
     \centering
-    \caption{Documentação da função \texttt{reconst\_hologram}.}
+    \caption[Documentação da função \texttt{reconst\_hologram}]{Documentação da função \texttt{reconst\_hologram}\cite{Gilles2018}.}
     \label{tab:reconst_hologram}
     \begin{tabular}{p{1cm} p{11.5cm}}
         \hline
@@ -160,6 +160,7 @@
     \label{fig:reconst_16views}
 \end{figure}
 
+
 % \chapter{Documentação de Funções para Compressão e Descompressão de Hologramas Reconstruídos}
 % \label{ch::doc-codigo-compress}
 
@@ -180,7 +181,7 @@
          & \mintinline[breaklines]{python}{def compress_views(hologram, ycbcr, rate)} \\
         \hline\multicolumn{2}{l}{\bfseries\small Descrição}\\
          & Comprimir os hologramas e calcular o \ac{PSNR}. \\
-         & \textit{Processo.} Para cada vista, o holograma é codificado, descodificado e analisado em termos do \ac{PSNR}. São criados 16 ficheiros \verb|*.jp2| por pasta \verb|rate_n|, correspondentes às 16 vistas reconstruídas, assim como ficheiros \ac{JSON} (um por holograma) na pasta \verb|kduOutput| com as métricas de compressão (\ac{PSNR}). \\
+         & \textit{Processo.} Para cada vista, o holograma é codificado, descodificado e analisado em termos do \ac{PSNR}. São criados 16 ficheiros \verb|*.jp2| por pasta \verb|rate_n|, correspondentes às 16 vistas reconstruídas, assim como um ficheiro \ac{JSON} por holograma na pasta \verb|kduOutput| com as métricas da relação qualidade-débito da compressão (\ac{PSNR}). \\
         \hline\multicolumn{2}{l}{\bfseries\small \textit{Inputs}}\\
          & \verb|hologram|: Nome do holograma a comprimir.\\
          & \hspace{1cm} \textit{Valor por defeito.} ``\verb|dices4k|''.\\
@@ -204,9 +205,9 @@
             % .2 piano4k.
          } \\
         \hline\multicolumn{2}{l}{\bfseries\small Dependências}\\
-        & Função \verb|cod_jpeg2000| (Tabela \ref{tab:cod_jpeg2000});\\
-        & Função \verb|dec_jpeg2000| (Tabela \ref{tab:dec_jpeg2000});\\
-        & Função \verb|psnr| (Tabela \ref{tab:psnr}).\\
+        & Função \verb|cod_jpeg2000| (Tabela \ref{tab:cod_jpeg2000});~%\\
+        Função \verb|dec_jpeg2000| (Tabela \ref{tab:dec_jpeg2000});~%\\
+        Função \verb|psnr| (Tabela \ref{tab:psnr}).\\
         & \textit{Ver Figura \ref{fig:compress_views}.} \\
         \hline
     \end{tabular}
@@ -310,7 +311,7 @@
         \multicolumn{2}{l}{\bfseries\small Protótipo em Python}\\
          & \mintinline[breaklines]{python}{def psnr(p1, p2)} \\
         \hline\multicolumn{2}{l}{\bfseries\small Descrição}\\
-         & Calcula a métrica de compressão \ac{PSNR} entre duas imagens. \\
+         & Calcula a relação qualidade-débito da compressão com a métrica \ac{PSNR} entre duas imagens. \\
         \hline\multicolumn{2}{l}{\bfseries\small \textit{Inputs}}\\
          & \verb|p1|: caminho para a primeira imagem. \\
          & \verb|p2|: caminho para a segunda imagem. \\

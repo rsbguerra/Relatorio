@@ -12,7 +12,6 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
 \usepackage{textcomp}
-
 \usepackage{makeidx}
 \usepackage{xspace}
 \usepackage{graphicx,color,times}
@@ -29,7 +28,8 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{tocbibind}
-\usepackage{natbib}
+%\usepackage{natbib}
+\usepackage{cite}
 \usepackage{hyperref}
 \usepackage{verbatim}
 
@@ -41,10 +41,12 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{array}
-\usepackage{booktabs}
 
+\usepackage{booktabs}
 \newcolumntype{x}[1]{%
 >{\centering}p{#1}}%
+
+% \usepackage[sorting=none]{biblatex}
 
 % \usepackage{glossaries}
 % \makeglossaries
@@ -221,8 +223,11 @@ Dezembro\fi de \number \year}
 
 \backmatter
 
-\bibliographystyle{plain}
-\nocite{*}
+% \bibliographystyle{plain}
+%\bibliographystyle{unsrt}
+\bibliographystyle{IEEEtran}
+% \nocite{*}
 % \bibliography{bibliografia}
+\bibliography{Raquel-Licenciatura}
 
 \end{document}
